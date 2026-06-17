@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Majd Ibrahim - Professional Cybersecurity Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* CORE DESIGN SYSTEM */
+        :root {
+            --navy-dark: #00122e;
+            --cyber-blue: #005088;
+            --neon-teal: #00d4ff;
+            --bg-cream: #f9fbfd;
+            --text-main: #1a202c;
+            --text-secondary: #4a5568;
+            --white: #ffffff;
+            --transition: all 0.3s ease;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background-color: #cbd5e0;
+            display: grid;
+            gap: 30px;
+            grid-template-columns: 1fr;
+            padding: 40px 0;
+            place-items: center;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .slide-container {
+            width: 1280px;
+            height: 720px;
+            background-color: var(--white);
+            border-radius: 4px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+            padding: 60px 80px;
+        }
+
+        /* BACKGROUND DECORATIONS */
+        .bg-pattern {
+            position: absolute;
+            top: 0; right: 0;
+            width: 40%; height: 100%;
+            background: linear-gradient(135deg, rgba(0,212,255,0.05) 0%, rgba(0,80,136,0.05) 100%);
+            clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 0% 100%);
+            z-index: 0;
+        }
+
+        .slide-container > * { position: relative; z-index: 1; }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3 { font-family: 'Poppins', sans-serif; color: var(--navy-dark); font-weight: 700; }
+        .ar-text { font-family: 'Cairo', sans-serif; }
+
+        h1 { font-size: 75px; line-height: 1.1; margin-bottom: 10px; }
+        .slide-title { font-size: 40px; font-weight: 700; margin-bottom: 40px; border-left: 6px solid var(--neon-teal); padding-left: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        h3 { font-size: 26px; margin-bottom: 15px; color: var(--cyber-blue); }
+        p, li { font-size: 20px; line-height: 1.7; color: var(--text-secondary); }
+
+        /* CONTENT AREA */
+        .content-area { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; width: 100%; }
+
+        /* LAYOUTS */
+        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+
+        .image-wrapper { border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.1); background: var(--bg-cream); height: 400px; }
+        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+        .tiled-content { display: flex; gap: 30px; width: 100%; }
+        .tile { 
+            flex: 1; padding: 40px; background: var(--bg-cream); border-radius: 16px; 
+            border-top: 4px solid var(--cyber-blue); transition: var(--transition);
+        }
+        .tile:hover { transform: translateY(-10px); background: #ffffff; box-shadow: 0 15px 35px rgba(0,0,0,0.05); }
+        .tile .icon { font-size: 50px; color: var(--neon-teal); margin-bottom: 25px; }
+
+        .highlight-number { font-size: 130px; font-weight: 700; color: var(--cyber-blue); line-height: 1; }
+        .number-label { font-size: 28px; color: var(--neon-teal); font-weight: 700; margin-bottom: 20px; }
+
+        /* BLEED IMAGE RIGHT LAYOUT */
+        .bleed-image-layout { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 0; align-items: start; }
+        .bleed-image-layout .content-container { padding: 80px; }
+        .bleed-image-layout .image-container { height: 720px; width: 100%; }
+        .bleed-image-layout img { height: 720px; width: 100%; object-fit: cover; }
+
+        /* TIMELINE (2 YEARS) */
+        .timeline { position: relative; width: 80%; height: 200px; display: flex; justify-content: space-around; align-items: center; margin: 0 auto; }
+        .timeline-line { position: absolute; top: 50%; left: 0; width: 100%; height: 4px; background: #e2e8f0; z-index: -1; }
+        .timeline-item { width: 40%; text-align: center; }
+        .timeline-dot { width: 24px; height: 24px; background: var(--neon-teal); border-radius: 50%; margin: 0 auto 15px; border: 4px solid var(--white); box-shadow: 0 0 0 4px #e2e8f0; }
+
+        /* TABLES */
+        table { width: 100%; border-collapse: collapse; text-align: left; }
+        th { background: var(--navy-dark); color: var(--white); padding: 20px; font-weight: 600; }
+        td { padding: 20px; border-bottom: 1px solid #edf2f7; color: var(--text-main); }
+        tr:hover { background: #f7fafc; }
+
+        /* Q&A */
+        .qa-center { text-align: center; }
+        .contact-box { margin-top: 40px; display: flex; justify-content: center; gap: 40px; }
+        .contact-item { display: flex; align-items: center; gap: 10px; font-size: 22px; color: var(--cyber-blue); font-weight: 500; }
+        
+        .short-link { display: inline-block; margin-top: 10px; color: var(--cyber-blue); font-weight: 600; text-decoration: none; font-size: 16px; border-bottom: 2px solid var(--neon-teal); transition: var(--transition); word-break: break-all; }
+        .short-link:hover { color: var(--neon-teal); }
+    </style>
+</head>
+<body>
+
+<div class="slide-container" id="slide1" style="background-color: var(--navy-dark); justify-content: center;">
+    <div class="bg-pattern" style="opacity: 0.15; clip-path: none; background: url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1280&auto=format&fit=crop') center/cover;"></div>
+    <div style="border-left: 10px solid var(--neon-teal); padding-left: 40px;">
+        <h1 style="color: var(--white); font-size: 90px;">Majd <span style="color: var(--neon-teal);">Ibrahim</span></h1>
+        <p style="color: #a0aec0; font-size: 32px; letter-spacing: 5px; text-transform: uppercase;">Cybersecurity Portfolio</p>
+        <p style="color: var(--white); font-size: 24px; margin-top: 20px; opacity: 0.8;">Professional Cooperative Training Portfolio</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide2" style="background-color: var(--bg-cream); align-items: center; justify-content: center;">
+    <div style="text-align: center;">
+        <p style="color: var(--neon-teal); font-weight: 600; letter-spacing: 3px; margin-bottom: 10px;">SECTION 01</p>
+        <h2 style="font-size: 65px;">Mission & <span style="color: var(--cyber-blue);">Vision</span></h2>
+        <div style="width: 150px; height: 8px; background: var(--navy-dark); margin: 30px auto;"></div>
+        <p style="max-width: 800px; margin: 0 auto; font-size: 24px;">Safeguarding digital frontiers through deep technical expertise, defensive resilience, and proactive security strategies to secure critical infrastructures.</p>
+    </div>
+</div>
+
+<div class="slide-container" id="slide3">
+    <h2 class="slide-title">Executive Summary</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>A Future-Ready Professional</h3>
+                <p>An ambitious Cybersecurity specialist and Certified Ethical Hacker (CEH), focusing on building secure digital environments and mitigating cyber risks for major enterprises.</p>
+                <p style="margin-top: 20px;">Striving to bridge the gap between secure web application development and offensive security, actively contributing to digital transformation and national security objectives.</p>
+                <ul style="margin-top: 30px; list-style: none; padding-left: 0;">
+                    <li style="margin-bottom: 10px;"><i class="fa-solid fa-circle-check" style="color: var(--neon-teal); margin-right: 10px;"></i> <strong>Professional Certification:</strong> Certified Ethical Hacker (CEH)</li>
+                    <li style="margin-bottom: 10px;"><i class="fa-solid fa-circle-check" style="color: var(--neon-teal); margin-right: 10px;"></i> <strong>Academic Background:</strong> Diploma in Cybersecurity</li>
+                    <li><i class="fa-solid fa-circle-check" style="color: var(--neon-teal); margin-right: 10px;"></i> <strong>Current Goal:</strong> Cooperative Training & Professional Empowerment</li>
+                </ul>
+            </div>
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=600&auto=format&fit=crop" alt="Cybersecurity Concept">
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide4">
+    <h2 class="slide-title">Core Competencies & Skills</h2>
+    <div class="content-area">
+        <div class="tiled-content">
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-user-ninja"></i></div>
+                <h3>Offensive Security</h3>
+                <p>Ethical hacking methodologies, including footprinting, network scanning, and advanced vulnerability assessment.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <h3>Defensive Systems</h3>
+                <p>Implementing threat detection mechanisms, firewall management, and continuous network security monitoring.</p>
+            </div>
+            <div class="tile">
+                <div class="icon"><i class="fa-solid fa-laptop-code"></i></div>
+                <h3>Secure Web Development</h3>
+                <p>Building robust web applications with a "Security-First" approach, aligned with industry standards like OWASP Top 10.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide5">
+    <h2 class="slide-title">Professional Certification Spotlight</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div style="text-align: center;">
+                <div class="highlight-number">CEH</div>
+                <div class="number-label">Certified Ethical Hacker</div>
+                <div style="padding: 15px 30px; background: var(--navy-dark); color: white; display: inline-block; border-radius: 8px; font-weight: 600;">Accredited by EC-Council</div>
+            </div>
+            <div>
+                <h3>Global & Industry-Recognized Credential</h3>
+                <p>The CEH certification validates fundamental and practical skills in applying the latest hacking tools and methodologies used by modern adversaries.</p>
+                <p style="margin-top: 20px;">Mastering network scanning, system hacking, and web application attack vectors ensures the ability to construct proactive and comprehensive defense barriers to protect enterprise assets.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container bleed-image-layout" id="slide6">
+    <div class="content-container">
+        <h2 class="slide-title">Secure Coding Projects</h2>
+        <div class="content-area">
+            <h3>Full-Stack Secure Web Development</h3>
+            <p>Developed a professional web platform that highlights high efficiency in implementing modern software engineering packages.</p>
+            <p style="margin-top: 20px;">Integrated secure coding practices, rigorous authentication, and precise user access controls, combined with optimized user interfaces to guarantee a seamless and fully secured browsing experience.</p>
+            <p style="font-weight: 600; color: var(--cyber-blue); margin-top: 15px;">Tools: HTML5, CSS3, JavaScript, Secure APIs.</p>
+        </div>
+    </div>
+    <div class="image-container">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=600&auto=format&fit=crop" alt="Web Development Project Display">
+    </div>
+</div>
+
+<div class="slide-container" id="slide7">
+    <h2 class="slide-title">Hands-on Lab Experiments</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div class="image-wrapper">
+                <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=600&auto=format&fit=crop" alt="Cybersecurity Lab Setup">
+            </div>
+            <div>
+                <h3>Simulated Lab Environments</h3>
+                <p>Extensive experience in isolated and virtualized sandboxes to execute and test real-world cyberattack and defense scenarios.</p>
+                <p style="margin-top: 20px;">Documenting and writing professional penetration testing reports across virtual networks, focusing on reconnaissance, gaining access, and post-exploitation analysis.</p>
+                <div style="margin-top: 30px; padding: 20px; background: var(--bg-cream); border-radius: 8px;">
+                    <p style="font-size: 18px; color: var(--navy-dark); font-weight: 600; margin-bottom: 10px;">Key Lab Activities:</p>
+                    <p style="font-size: 16px; line-height: 1.6;">• Network traffic analysis and packet sniffing<br>• Vulnerability scanning, assessment, and patch verification<br>• Web application penetration testing (Capture The Flag)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide8">
+    <h2 class="slide-title">Technical Toolset & Matrix</h2>
+    <div class="content-area">
+        <table>
+            <thead>
+                <tr>
+                    <th>Technical Domain</th>
+                    <th>Tools & Technologies</th>
+                    <th>Proficiency Level</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Penetration Testing</td>
+                    <td>Kali Linux, Nmap, Metasploit, Burp Suite</td>
+                    <td><span style="color: var(--neon-teal);">●●●●○</span> Advanced</td>
+                </tr>
+                <tr>
+                    <td>Web Development</td>
+                    <td>HTML5, CSS3, JavaScript, Responsive Design</td>
+                    <td><span style="color: var(--neon-teal);">●●●●●</span> Expert</td>
+                </tr>
+                <tr>
+                    <td>Network Analysis</td>
+                    <td>Wireshark, TCPDump, Packet Tracer</td>
+                    <td><span style="color: var(--neon-teal);">●●●●○</span> Advanced</td>
+                </tr>
+                <tr>
+                    <td>Operating Systems</td>
+                    <td>Linux (Ubuntu, Debian), Windows Server, macOS</td>
+                    <td><span style="color: var(--neon-teal);">●●●●○</span> Advanced</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="slide-container" id="slide9">
+    <h2 class="slide-title">Academic & Career Roadmap (Diploma)</h2>
+    <div class="content-area">
+        <div class="timeline">
+            <div class="timeline-line"></div>
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <p style="font-weight: 600; font-size: 24px;">2025</p>
+                <p style="font-size: 18px; color: var(--cyber-blue); font-weight: 600;">Academic Foundation & Projects</p>
+                <p style="font-size: 14px; margin-top: 5px;">Starting the diploma with a deep focus on security concepts and secure development</p>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot" style="background: var(--navy-dark);"></div>
+                <p style="font-weight: 600; font-size: 24px;">2026</p>
+                <p style="font-size: 18px; color: var(--neon-teal); font-weight: 600;">Professional Credential & Training</p>
+                <p style="font-size: 14px; margin-top: 5px;">Earning the CEH certification and launching cooperative training for career empowerment</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide10">
+    <h2 class="slide-title">Source Code Repository (GitHub)</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Code Review & Application Repositories</h3>
+                <p>Scan the QR code for direct access to my GitHub profile to review all source codes, software architectures, and development projects.</p>
+                <p style="margin-top: 20px;">Scanning this code provides a transparent and comprehensive look into my technical methodology, coding standards, and problem-solving capabilities.</p>
+                <div style="margin-top: 30px; display: flex; align-items: center; gap: 15px;">
+                    <i class="fa-brands fa-github" style="font-size: 40px; color: var(--cyber-blue);"></i>
+                    <p style="font-weight: 600;">Technical Repositories</p>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: center;">
+                <div style="padding: 20px; background: white; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); width: 400px; text-align: center;">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://github.com/majd2abdulaziz-code" alt="Majd GitHub QR Code" style="width: 250px; margin-bottom: 20px;">
+                    <p style="font-size: 15px; color: var(--text-secondary); font-weight: 600; margin-bottom: 10px;">SCAN TO EXPLORE CODE ON GITHUB</p>
+                    <a href="https://github.com/majd2abdulaziz-code" target="_blank" class="short-link">github.com/majd2abdulaziz-code</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide11">
+    <h2 class="slide-title">Lab Documentation & Reports (Drive)</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div style="display: flex; justify-content: center;">
+                <div style="padding: 20px; background: white; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); width: 400px; text-align: center;">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://drive.google.com/drive/folders/1vJvyBD4Z0FtNfLpD4ZtG8CeadwVY1_Ik" alt="Majd Google Drive QR Code" style="width: 250px; margin-bottom: 20px;">
+                    <p style="font-size: 15px; color: var(--text-secondary); font-weight: 600; margin-bottom: 10px;">SCAN TO VIEW LAB REPORTS</p>
+                    <a href="https://drive.google.com/drive/folders/1vJvyBD4Z0FtNfLpD4ZtG8CeadwVY1_Ik" target="_blank" class="short-link">Google Drive Folder</a>
+                </div>
+            </div>
+            <div>
+                <h3>Accessing Evidence & Documentation</h3>
+                <p>Scan the QR code to review detailed lab reports, academic records, and verified professional certificates safely stored on Google Drive.</p>
+                <p style="margin-top: 20px;">This directory serves as tangible proof supporting all offensive diagnostics, security procedures, and defensive solutions mentioned throughout this presentation.</p>
+                <div style="margin-top: 30px; display: flex; align-items: center; gap: 15px; color: #25a162;">
+                    <i class="fa-solid fa-folder-open" style="font-size: 40px;"></i>
+                    <p style="font-weight: 600; color: var(--navy-dark);">Official Training Attachments</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide12">
+    <h2 class="slide-title">Professional Network (LinkedIn)</h2>
+    <div class="content-area">
+        <div class="two-column">
+            <div>
+                <h3>Connect with me on LinkedIn</h3>
+                <p>Scan the code or click the link to visit my professional profile, view endorsed technical skills, and follow my continuous training activities in the cybersecurity field.</p>
+                <p style="margin-top: 20px;">I regularly share insights on digital security, document practical applications, and look forward to contributing to upcoming strategic cyber defense initiatives.</p>
+                <div style="margin-top: 30px; display: flex; align-items: center; gap: 15px; color: #0077B5;">
+                    <i class="fa-brands fa-linkedin" style="font-size: 40px;"></i>
+                    <p style="font-weight: 600;">Majd Abdulaziz Ibrahim</p>
+                </div>
+            </div>
+            <div style="display: flex; justify-content: center;">
+                <div style="padding: 20px; background: white; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.1); width: 400px; text-align: center;">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=https://www.linkedin.com/in/majd-ibrahim-356a64314" alt="Majd LinkedIn QR Code" style="width: 250px; margin-bottom: 20px;">
+                    <p style="font-size: 15px; color: var(--text-secondary); font-weight: 600; margin-bottom: 10px;">SCAN TO VISIT MY PROFILE</p>
+                    <a href="https://linkedin.com/in/majd-ibrahim-356a64314" target="_blank" class="short-link">linkedin.com/in/majd-ibrahim</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="slide-container" id="slide13" style="background-color: var(--navy-dark); text-align: center; justify-content: center;">
+    <div class="qa-center">
+        <h2 style="color: var(--neon-teal); font-size: 55px; margin-bottom: 20px;">Thank You Very Much</h2>
+        <p style="color: var(--white); font-size: 26px; opacity: 0.8; max-width: 900px; margin: 0 auto 30px;">I look forward to discussing how my technical skill set and dedication can bring tangible value to your prestigious organization.</p>
+        
+        <div class="contact-box">
+            <div class="contact-item" style="color: var(--white);"><i class="fa-solid fa-envelope" style="color: var(--neon-teal); margin-right: 10px;"></i> majd2.abdulaziz@gmail.com</div>
+            <div class="contact-item" style="color: var(--white);"><i class="fa-solid fa-phone" style="color: var(--neon-teal); margin-right: 10px;"></i> 0537292913</div>
+        </div>
+        
+        <div style="margin-top: 60px; color: #a0aec0; font-size: 16px;">Kingdom of Saudi Arabia | Contributing to Vision 2030</div>
+    </div>
+</div>
+
+</body>
+</html>
